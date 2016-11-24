@@ -1,0 +1,9 @@
+<?xml version='1.0'?>
+
+<launch>
+	<node pkg="baxter_interface" name="baxter_joint_trajectory_action_server" type="joint_trajectory_action_server.py" output="screen"/>
+	<node pkg="baxter_tools"     name="baxter_enable_robot" type="enable_robot.py" args="-e" output="screen"/>
+	<node pkg="baxter_tools"     name="baxter_tucker" type="tuck_arms.py" args="-u" output="screen"/>
+
+        <include file="$(find baxter_moveit_config)/launch/baxter_grippers.launch"/>
+</launch>
