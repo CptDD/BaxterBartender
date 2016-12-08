@@ -13,24 +13,41 @@ using namespace std;
 #define LEFT_ARM_PLANNING_GROUP "left_arm"
 #define BOTH_ARMS_PLANNING_GROUP "both_arms"
 
-#define LEFT_TARGET_X 1.00977
-#define LEFT_TARGET_Y 0.183786
-#define LEFT_TARGET_Z 0.0735425
+#define LEFT_TARGET_X 0.80666
+#define LEFT_TARGET_Y 0.29353
+#define LEFT_TARGET_Z -0.052606
 
-#define LEFT_ORIENTATION_X 0.114125
-#define LEFT_ORIENTATION_Y 0.731938
-#define LEFT_ORIENTATION_Z -0.0833392
-#define LEFT_ORIENTATION_W 0.666556
+#define LEFT_ORIENTATION_X 0.10911
+#define LEFT_ORIENTATION_Y 0.69203
+#define LEFT_ORIENTATION_Z -0.089753
+#define LEFT_ORIENTATION_W 0.70791
 
 
-#define RIGHT_TARGET_X 0.837469
-#define RIGHT_TARGET_Y -0.220404
-#define RIGHT_TARGET_Z 0.025409
+#define LEFT_TARGET_X2 0.916892
+#define LEFT_TARGET_Y2 0.261377
+#define LEFT_TARGET_Z2 -0.0506214
 
-#define RIGHT_ORIENTATION_X -0.133733
+
+#define LEFT_ORIENTATION_X2 0.109604
+#define LEFT_ORIENTATION_Y2 0.691875
+#define LEFT_ORIENTATION_Z2 -0.0898921
+#define LEFT_ORIENTATION_W2 0.707966
+
+
+#define RIGHT_TARGET_X 0.93154
+#define RIGHT_TARGET_Y -0.25284
+#define RIGHT_TARGET_Z 0.10869
+
+#define RIGHT_ORIENTATION_X -0.11221
+#define RIGHT_ORIENTATION_Y 0.71225
+#define RIGHT_ORIENTATION_Z 0.08662
+#define RIGHT_ORIENTATION_W 0.68746
+
+
+/*0.837469;-0.220404;0.025409;0.133733
 #define RIGHT_ORIENTATION_Y  0.813764
 #define RIGHT_ORIENTATION_Z 0.0809839
-#define RIGHT_ORIENTATION_W 0.559772
+#define RIGHT_ORIENTATION_W 0.559772*
 
 
 /***********
@@ -85,13 +102,34 @@ int main(int argc,char**argv)
 	if(group_left.plan(plan_left))
 	{
         	group_left.move();
-		cout<<"Position for left target reached!"<<endl;
+		cout<<"First position for left target reached!"<<endl;
 	}else
 	{
 		cout<<"NO plan found for the position target of the left arm!"<<endl;
 	}
 
+	sleep(2.0);	
+
+	geometry_msgs::Pose left_pose2;
+	left_pose2.position.x=LEFT_TARGET_X2;
+	left_pose2.position.y=LEFT_TARGET_Y2;
+	left_pose2.position.z=LEFT_TARGET_Z2;
+	left_pose2.orientation.x=LEFT_ORIENTATION_X2;
+	left_pose2.orientation.y=LEFT_ORIENTATION_Y2;
+	left_pose2.orientation.z=LEFT_ORIENTATION_Z2;
+	left_pose2.orientation.w=LEFT_ORIENTATION_W2;
 	
+	group_left.setPoseTarget(left_pose2);
+
+	if(group_left.plan(plan_left))
+	{
+        	group_left.move();
+		cout<<"Second position for left target reached!"<<endl;
+	}else
+	{
+		cout<<"NO plan found for the position target of the left arm!"<<endl;
+	}	
+
 		
 	geometry_msgs::Pose right_pose;
 	right_pose.position.x=RIGHT_TARGET_X;

@@ -37,10 +37,11 @@ int main(int argc,char**argv)
 
 
 
-	ros::Publisher pub;
+	ros::Publisher pub_left,pub_right;
 
 
-	pub=nh.advertise<baxter_core_msgs::EndEffectorCommand>("/robot/end_effector/right_gripper/command",1);	
+	pub_left=nh.advertise<baxter_core_msgs::EndEffectorCommand>("/robot/end_effector/left_gripper/command",1);	\
+	pub_right=nh.advertise<baxter_core_msgs::EndEffectorCommand>("/robot/end_effector/right_gripper/command",1);
 	
 	
 	baxter_core_msgs::EndEffectorCommand msg;
@@ -57,12 +58,13 @@ int main(int argc,char**argv)
 	stringstream args2;
 	args2<<"{\"position\":0.0, \"dead zone\":5.0, \"force\":40.0,\"holding force\":30.0,\"velocity\":50.0}";	
 
-	msg.args=args2.str();
+	msg.args=args.str();
 
 	
 	for(int i=0;i<5;i++)
 	{
-		pub.publish(msg);	
+		pub_left.publish(msg);	
+		pub_right.publish(msg);
 		sleep(1.0);
 	}
 	

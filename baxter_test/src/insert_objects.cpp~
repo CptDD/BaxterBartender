@@ -40,7 +40,7 @@ int main(int argc,char**argv)
 	pose.orientation.w = 1.0;
 	pose.position.x=1.0;
 	pose.position.y=0;
-	pose.position.z=-0.11;
+	pose.position.z=-0.17;
 
 	shape_msgs::SolidPrimitive primitive;
 	primitive.type = primitive.BOX;
@@ -65,7 +65,7 @@ int main(int argc,char**argv)
 	moveit_msgs::AttachedCollisionObject beer_bottle;
 
 
-	shapes::Mesh *bottle_mesh=shapes::createMeshFromResource("package://baxter_test/meshes/beer_bottle_up.stl",scale);
+	shapes::Mesh *bottle_mesh=shapes::createMeshFromResource("package://baxter_test/meshes/beer_bottle_up_75.stl",scale);
 	beer_bottle.link_name="base";
 	beer_bottle.object.header.frame_id="base";
 	beer_bottle.object.id="beer_bottle";
@@ -77,9 +77,10 @@ int main(int argc,char**argv)
 
 	beer_bottle.object.mesh_poses.resize(1);
 
-	beer_bottle.object.mesh_poses[0].position.x = 0.912;
-   	beer_bottle.object.mesh_poses[0].position.y = -0.257;
-    	beer_bottle.object.mesh_poses[0].position.z = 0.0;
+	
+	beer_bottle.object.mesh_poses[0].position.x = 0.912017;
+   	beer_bottle.object.mesh_poses[0].position.y = -0.257126;
+    	beer_bottle.object.mesh_poses[0].position.z = -0.017;
     	beer_bottle.object.mesh_poses[0].orientation.w= 0.0; 
     	beer_bottle.object.mesh_poses[0].orientation.x= 0.0; 
     	beer_bottle.object.mesh_poses[0].orientation.y= 0.0;
@@ -97,7 +98,7 @@ int main(int argc,char**argv)
 
 	moveit_msgs::AttachedCollisionObject beer_pint;
 	
-	shapes::Mesh* pint_mesh=shapes::createMeshFromResource("package://baxter_test/meshes/beer_pint.stl",scale);
+	shapes::Mesh* pint_mesh=shapes::createMeshFromResource("package://baxter_test/meshes/beer_pint_75.stl",scale);
 	beer_pint.link_name="base";
 	beer_pint.object.header.frame_id="base";
 	beer_pint.object.id="beer_pint";
@@ -107,10 +108,11 @@ int main(int argc,char**argv)
 	shapes::constructMsgFromShape(pint_mesh, pint_mesh_msg);
     	mesh_pint = boost::get<shape_msgs::Mesh>(pint_mesh_msg);
 
+
 	beer_pint.object.mesh_poses.resize(1);
-	beer_pint.object.mesh_poses[0].position.x=1.094196;
-	beer_pint.object.mesh_poses[0].position.y=0.160750;
-	beer_pint.object.mesh_poses[0].position.z=0.0;
+	beer_pint.object.mesh_poses[0].position.x=1.09417;
+	beer_pint.object.mesh_poses[0].position.y=0.160782;
+	beer_pint.object.mesh_poses[0].position.z=-0.017;
 	beer_pint.object.mesh_poses[0].orientation.w=0.0;
 	beer_pint.object.mesh_poses[0].orientation.x=0.0;
 	beer_pint.object.mesh_poses[0].orientation.y=0.0;

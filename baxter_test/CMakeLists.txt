@@ -136,6 +136,7 @@ add_executable(baxter_pose_reader src/robot_arm_pose.cpp)
 add_executable(baxter_move_to_target src/move_to_target.cpp)
 add_executable(baxter_insert_objects src/insert_objects.cpp)
 add_executable(baxter_gripper src/baxter_gripper.cpp)
+add_executable(baxter_gripper_close src/baxter_close_gripper.cpp)
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(baxter_test_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
@@ -157,6 +158,9 @@ target_link_libraries(baxter_gripper
    ${catkin_LIBRARIES}
 )
 
+target_link_libraries(baxter_gripper_close 
+   ${catkin_LIBRARIES}
+)
 
 
 #############
