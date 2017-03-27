@@ -1,0 +1,8 @@
+<?xml version='1.0'?>
+
+<launch>
+	<node pkg="baxter_light" name="learning_node" type="baxter_learning" args="joint_states:=/robot/joint_states" output="screen" />
+
+	<node pkg="baxter_light" name="light_node" type="baxter_light" args="joint_states:=/robot/joint_states" output="screen" />
+
+</launch>
