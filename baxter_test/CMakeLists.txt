@@ -11,11 +11,14 @@ find_package(catkin REQUIRED COMPONENTS
   moveit_ros_planning_interface
   tf
   baxter_core_msgs
+  ar_track_alvar_msgs
+  dynamic_reconfigure
+
 )
 
 ## System dependencies are found with CMake's conventions
 #find_package(Boost REQUIRED COMPONENTS system)
-find_package(Eigen)
+#find_package(Eigen)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -89,10 +92,10 @@ find_package(Eigen)
 ##     and list every .cfg file to be processed
 
 ## Generate dynamic reconfigure parameters in the 'cfg' folder
-# generate_dynamic_reconfigure_options(
-#   cfg/DynReconf1.cfg
-#   cfg/DynReconf2.cfg
-# )
+ generate_dynamic_reconfigure_options(
+   cfg/rotation.cfg
+ #  #cfg/DynReconf2.cfg
+)
 
 ###################################
 ## catkin specific configuration ##
@@ -129,7 +132,7 @@ include_directories(
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(baxter_test ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#add_dependencies(baxter_test ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
 add_executable(baxter_pose_reader src/robot_arm_pose.cpp)
@@ -137,9 +140,21 @@ add_executable(baxter_move_to_target src/move_to_target.cpp)
 add_executable(baxter_insert_objects src/insert_objects.cpp)
 add_executable(baxter_gripper src/baxter_gripper.cpp)
 add_executable(baxter_gripper_close src/baxter_close_gripper.cpp)
+add_executable(baxter_ar src/baxter_ar.cpp)
+add_executable(baxter_current_pose src/current_pose.cpp)
+add_executable(baxter_marker_pose src/baxter_marker_pose.cpp)
+add_executable(baxter_marker_move src/baxter_ar_move.cpp)
+add_executable(baxter_marker_transformer src/baxter_transform.cpp)
+add_executable(baxter_broadcast src/broadcast.cpp)
+
+
+
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(baxter_test_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+
+add_dependencies(baxter_broadcast baxter_test_gencfg)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(baxter_pose_reader
@@ -161,6 +176,31 @@ target_link_libraries(baxter_gripper
 target_link_libraries(baxter_gripper_close 
    ${catkin_LIBRARIES}
 )
+
+target_link_libraries(baxter_ar
+   ${catkin_LIBRARIES}
+)
+
+target_link_libraries(baxter_current_pose 
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(baxter_marker_pose
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(baxter_marker_move
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(baxter_marker_transformer
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(baxter_broadcast
+  ${catkin_LIBRARIES}
+)
+
 
 
 #############

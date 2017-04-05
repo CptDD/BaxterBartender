@@ -51,7 +51,7 @@ int main(int argc,char**argv)
 	
 
 	stringstream args;
-	args<<"{\"position\":0.0, \"dead zone\":5.0, \"force\":40.0,\"holding force\":30.0,\"velocity\":50.0}";	
+	args<<"{\"position\":20.0, \"dead zone\":5.0, \"force\":40.0,\"holding force\":30.0,\"velocity\":50.0}";	
 
 	msg.args=args.str();
 

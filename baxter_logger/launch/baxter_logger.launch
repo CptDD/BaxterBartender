@@ -1,0 +1,5 @@
+<launch>
+	
+   	<node pkg="baxter_logger" name="baxter_logger" type="logger.py" output="screen"/>
+
+</launch>

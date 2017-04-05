@@ -50,6 +50,24 @@ geometry_msgs::Pose go_up_left(int when=0)
 }
 
 
+geometry_msgs::Pose go_tester()
+{
+
+	geometry_msgs::Pose pose;
+	pose.position.x=0.732617;
+	pose.position.y=0.134935;
+	pose.position.z=0.111202;
+
+	pose.orientation.x=0.231323;
+	pose.orientation.y=0.972512;
+	pose.orientation.z=0.0197414;
+	pose.orientation.w=0.017899;
+
+	return pose;
+
+}
+
+
 
 geometry_msgs::Pose go_up_left_2(int when=0)
 {

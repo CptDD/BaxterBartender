@@ -40,7 +40,7 @@ int main(int argc,char**argv)
 	ros::Publisher pub_left,pub_right;
 
 
-	pub_left=nh.advertise<baxter_core_msgs::EndEffectorCommand>("/robot/end_effector/left_gripper/command",1);	\
+	pub_left=nh.advertise<baxter_core_msgs::EndEffectorCommand>("/robot/end_effector/left_gripper/command",1);	
 	pub_right=nh.advertise<baxter_core_msgs::EndEffectorCommand>("/robot/end_effector/right_gripper/command",1);
 	
 	

@@ -134,6 +134,8 @@ include_directories(
 ## Declare a C++ executable
 add_executable(baxter_light src/light.cpp)
 add_executable(baxter_learning src/learning.cpp)
+add_executable(baxter_v2 src/light_v2.cpp)
+add_executable(baxter_lv2 src/learning_v2.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -146,6 +148,14 @@ target_link_libraries(baxter_light
 
 target_link_libraries(baxter_learning
 	${catkin_LIBRARIES}
+)
+
+target_link_libraries(baxter_v2
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(baxter_lv2
+   ${catkin_LIBRARIES}
 )
 
 #############
