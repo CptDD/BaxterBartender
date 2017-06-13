@@ -1,0 +1,15 @@
+material BeerMug/Glass
+{
+	techinque
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture glass.jpg
+				filtering anistropic
+        		max_anisotropy 16
+			}
+		}
+	}
+}
