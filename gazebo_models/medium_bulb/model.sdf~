@@ -1,0 +1,31 @@
+<?xml version='1.0'?>
+
+<sdf version='1.4'>
+	<model name="light_bulb">
+			<static>false</static>
+			<link name="base">
+			<pose>0 0 0 0 0 0</pose>
+				<visual name="visual">
+					<geometry>
+						<mesh>
+							<uri>model://medium_bulb/meshes/medium_bulb.dae</uri>
+						</mesh>
+					</geometry>
+				</visual>
+
+				<collision name="collision">
+					<geometry>
+						<mesh>
+							<uri>model://light_bulb/meshes/medium_bulb.dae</uri>
+						</mesh>
+					</geometry>
+				</collision>
+
+				<inertial>
+        		<pose>0 0 0 0 0 0</pose>
+        		<mass>0.1</mass>
+      		</inertial>
+
+      		</link>
+	</model>
+</sdf>
